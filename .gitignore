@@ -2,3 +2,5 @@
 .idea/
 TODO.md
 __pycache__/
+.dist
+dist/

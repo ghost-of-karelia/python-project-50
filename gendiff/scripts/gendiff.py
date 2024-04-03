@@ -1,40 +1,49 @@
 import argparse
+import json
 
-def run_parser():
-
+def run_parser(file1, file2):
     parser = argparse.ArgumentParser(
-        prog='gendiff', usage='%(prog)s [-h] first_file second_file',
         description='Compares two configuration files and shows a difference.'
     )
+    parser.add_argument('first_file', help='')
+    parser.add_argument('second_file', help='')
+    parser.add_argument('-f', '--format', help='see format of output')
+    args = parser.parse_args() # So linter does not argue.
+    #parser.parse_args()
 
-    parser.add_argument('first_file', nargs='+', help='')
-    parser.add_argument('second_file', nargs='+', help='')
+def generate_diff(file1, file2):
+    diff = {}
+    for key in sorted(file1.keys())+sorted(file2.keys()):
+        if key not in file2:
+            diff[f'- {key}'] = file1[key]
+        elif key not in file1:
+            diff[f'+ {key}'] = file2[key]
+        else:
+            if file1[key] != file2[key]:
+                diff[f'- {key}'] = file1[key]
+                diff[f'+ {key}'] = file2[key]
+            else:
+                diff[key] = file1[key]
 
-    parser.print_help()
+    # Print the {diff} in a readable format in the console
+    printable_result = []
+    for key, value in diff.items():
+        printable_result.append(f"{key}: {value}")
+    for i in printable_result:
+        print(i)
 
-
-
+    return diff
 
 def main():
     print('')
-    #run_parser() TODO delete the function run_parser if works without it
-    print('')
     print("Hello, %username%!\nBe assured, the Gendiff script is running!")
+    print('')
+    file1 = json.load(open('file1.json'))
+    file2 = json.load(open('file2.json'))
+    generate_diff(file1, file2)
+    #run_parser(file1, file2)
+
 
 
 if __name__ == '__main__':
     main()
-
-
-parser = argparse.ArgumentParser(
-    prog='gendiff', usage='%(prog)s [-h] first_file second_file',
-    description='Compares two configuration files and shows a difference.'
-)
-
-parser.add_argument('first_file', nargs='+', help='')
-parser.add_argument('second_file', nargs='+', help='')
-
-args = parser.parse_args()
-print(args.accumulate(args.integers))
-
-
