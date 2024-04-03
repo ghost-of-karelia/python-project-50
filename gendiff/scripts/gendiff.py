@@ -33,7 +33,7 @@ def generate_diff(file1, file2):
     printable_result = []
     for key, value in diff.items():
         printable_result.append(f"{key}: {value}")
-    for i in printable_result:
+    for i in printable_result:  # TODO: No need for the second for loop here, just print key and value in the first loop
         print(i)
 
     # Return result
