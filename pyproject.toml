@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "difference-calculator"
+version = "0.1.0"
+description = "This is my game project for studying Python."
+authors = ["Dima Pavlov"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flake8 = "^7.0.0"
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
