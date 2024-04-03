@@ -1,17 +1,21 @@
 import argparse
 import json
 
-def run_parser(file1, file2):
+
+def run_parser():
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.'
     )
     parser.add_argument('first_file', help='')
     parser.add_argument('second_file', help='')
     parser.add_argument('-f', '--format', help='see format of output')
-    args = parser.parse_args() # So linter does not argue.
-    #parser.parse_args()
+    # args = parser.parse_args() # So linter does not argue.
+    parser.parse_args()
+
 
 def generate_diff(file1, file2):
+
+    # Calculate difference
     diff = {}
     for key in sorted(file1.keys())+sorted(file2.keys()):
         if key not in file2:
@@ -32,17 +36,17 @@ def generate_diff(file1, file2):
     for i in printable_result:
         print(i)
 
+    # Return result
     return diff
+
 
 def main():
     print('')
-    print("Hello, %username%!\nBe assured, the Gendiff script is running!")
-    print('')
-    file1 = json.load(open('file1.json'))
-    file2 = json.load(open('file2.json'))
-    generate_diff(file1, file2)
-    #run_parser(file1, file2)
-
+    print("Hello, %username%! Be assured, the Gendiff script is running!")
+    # file1 = json.load(open('file1.json'))
+    # file2 = json.load(open('file2.json'))
+    # generate_diff(file1, file2)
+    run_parser()
 
 
 if __name__ == '__main__':
