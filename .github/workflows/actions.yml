@@ -1,4 +1,4 @@
-name: Difference Calculator Actions Python CI
+name: Github Actions CI
 run-name: ghost-of-karelia is testing with GitHub Actions
 
 on:
