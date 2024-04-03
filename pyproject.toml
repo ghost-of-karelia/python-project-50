@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "difference-calculator"
+name = "hexlet-code"
 version = "0.1.0"
 description = "This is my game project for studying Python."
 authors = ["Dima Pavlov"]
 readme = "README.md"
+packages = [{include = "gendiff"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

@@ -13,6 +13,19 @@ def run_parser():
     parser.print_help()
 
 
+
+
+def main():
+    print('')
+    #run_parser() TODO delete the function run_parser if works without it
+    print('')
+    print("Hello, %username%!\nBe assured, the Gendiff script is running!")
+
+
+if __name__ == '__main__':
+    main()
+
+
 parser = argparse.ArgumentParser(
     prog='gendiff', usage='%(prog)s [-h] first_file second_file',
     description='Compares two configuration files and shows a difference.'
@@ -25,13 +38,3 @@ args = parser.parse_args()
 print(args.accumulate(args.integers))
 
 
-
-def main():
-    print('')
-    #run_parser() TODO delete the function run_parser if works without it
-    print('')
-    print("Hello, %username%!\nBe assured, the Gendiff script is running!")
-
-
-if __name__ == '__main__':
-    main()
