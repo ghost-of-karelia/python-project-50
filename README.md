@@ -16,5 +16,3 @@ This is a learning project for me getting used with architectural pattern. The p
 
 ### Run
 Clone, make build, make install.
-
-.
